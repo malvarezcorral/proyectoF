@@ -1,64 +1,90 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="jvham.builder.Item"%>
-<%@page import="jvham.builder.Packing"%>
-<%@page import="jvham.builder.Wrapper"%>
-<%@page import="jvham.builder.Bottle"%>
-<%@page import="jvham.builder.Burger"%>
-<%@page import="jvham.builder.ColdDrink"%>
-<%@page import="jvham.builder.VegBurger"%>
-<%@page import="jvham.builder.ChickenBurger"%>
-<%@page import="jvham.builder.Coke"%>
-<%@page import="jvham.builder.Pepsi"%>
-<%@page import="jvham.builder.Meal"%>
-<%@page import="jvham.builder.MealBuilder"%>
-<%@page import="jvham.builder.Consola"%>
+<%@page import="builder.Item"%>
+<%@page import="builder.Chico"%>
+<%@page import="builder.Diametro"%>
+<%@page import="builder.Gde"%>
+<%@page import="builder.Longitud"%>
+<%@page import="builder.Luminati"%>
+<%@page import="builder.Normal"%>
+<%@page import="builder.Prod"%>
+<%@page import="builder.ProdBuilder"%>
+<%@page import="builder.Producto1"%>
+<%@page import="builder.diamch"%>
+<%@page import="builder.diamgde"%>
+<%@page import="builder.Consola"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Restaurante de Hambuguesas | Luis Fernando Ramirez Vasquez</title>
-<link rel="stylesheet" type="text/css" href="css/mimain.css">
+<title></title>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<h1 align=center>Builder</h1>
+    <div id="header">
+	<div id="logo">
+		<a href="#"></a>
+		<h2><a href="#"><small> </small></a></h2>	
+	</div>
+ <div id="buttons">
+	<a href="index.jsp" class="but_home" title=""></a><div class="but_razd"></div>
+	<a href="blog.jsp" class="but" title="">Materiales</a><div class="but_razd"></div>
+	<a href="galeria.jsp" class="but" title="">Galería</a><div class="but_razd"></div>
+	<a href="inventario.jsp" class="but" title="">Inventario</a><div class="but_razd"></div>
+	<a href="home.html" class="but" title="">Patrones</a>	
+	</div>
+</div>
+
+<br>
+<br>
+<h1 align=center id="titulo">Builder</h1>
+<div id="margen">
+<br>
+<p>Se utiliza el patr&oacute;n Builder para la descripci&oacute;n de lostipos de productos, incluyendo largo, diametro y precio por producto.</p>
 <div>
-<br>
-<p>En esta secci&oacute;n se aplica el patr&oacute;n Builder en la preparacion de las comidas. Se pueden crear comidas con hamburguesa y con bebida. Las hamburguesas pueden ser de tipo VegBurger o de tipo ChickenBurger. Las bebidas pueden ser de tipo Coke o Pepsi.</p>
-<div id="consola">
 <%
-MealBuilder mealBuilder = new MealBuilder();
+ProdBuilder prodBuilder = new ProdBuilder();
 
-Meal vegMeal = mealBuilder.prepareVegMeal();
-System.out.println("Veg Meal");
+Prod p1 = prodBuilder.prodNorm();
+System.out.println("Normal");
 %>
-<p>Comida Vegetariana</p>
+<p>Cristal clásico</p>
 <%
-vegMeal.showItems();
+p1.showItems();
 %>
 <%=Consola.texto %>
 <%Consola.texto = "";%>
-<p>Costo Total: <%=vegMeal.getCost() %></p>
 <%
-System.out.println("Total Cost: " + vegMeal.getCost());
+System.out.println("Total Cost: " + p1.getCost());
 
-Meal nonVegMeal = mealBuilder.prepareNonVegMeal();
-System.out.println("\n\nNon-Veg Meal");
+Prod p2 = prodBuilder.prodCol();
+System.out.println("\n\nColor");
 %>
-<p>Comida No Vegetariana</p>
+<p>Cristal de Color</p>
 <%
-nonVegMeal.showItems();
+p2.showItems();
 %>
 <%=Consola.texto %>
-<p>Costo Total: <%=nonVegMeal.getCost() %></p>
 <%
-System.out.println("Total Cost: " + nonVegMeal.getCost());
+System.out.println("Total Cost: " + p2.getCost());
+
+Prod p3 = prodBuilder.prodLum();
+System.out.println("\n\nLuminati");
 %>
+<p>Cristal Fluorescente</p>
+<%
+p3.showItems();
+%>
+<%=Consola.texto %>
+<%
+System.out.println("Total Cost: " + p3.getCost());
+%>
+
 </div>
 <%Consola.texto = "";%>
 <br>
 </div>
 <br>
-Ramirez Vasquez Luis Fernando - 2017
+
 </body>
 </html>

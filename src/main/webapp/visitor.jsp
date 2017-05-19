@@ -1,27 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="jvham.visitor.ItemElement"%>
-<%@page import="jvham.visitor.Fruit"%>
-<%@page import="jvham.visitor.Toy"%>
-<%@page import="jvham.visitor.ShoppingCartVisitor"%>
-<%@page import="jvham.visitor.ShoppingCartVisitorImpl"%>
-<%@page import="jvham.visitor.ShoppingCartClient"%>
-<%@page import="jvham.visitor.Consola"%>
+<%@page import="visitor.ItemElement"%>
+<%@page import="visitor.Producto"%>
+<%@page import="visitor.Figura "%>
+<%@page import="visitor.ShoppingCartVisitor"%>
+<%@page import="visitor.ShoppingCartVisitorImpl"%>
+<%@page import="visitor.ShoppingCartClient"%>
+<%@page import="visitor.Consola"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Restaurante de Hambuguesas | Luis Fernando Ramirez Vasquez</title>
-<link rel="stylesheet" type="text/css" href="css/mimain.css">
+<title>Cristaleria Flores</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1 align=center>Visitor</h1>
-<div>
+<div id="header">
+	<div id="logo">
+		<a href="#"></a>
+		<h2><a href="#"><small> </small></a></h2>	
+	</div>
+ <div id="buttons">
+	<a href="index.jsp" class="but_home" title=""></a><div class="but_razd"></div>
+	<a href="blog.jsp" class="but" title="">Materiales</a><div class="but_razd"></div>
+	<a href="galeria.jsp" class="but" title="">Galería</a><div class="but_razd"></div>
+	<a href="inventario.jsp" class="but" title="">Inventario</a><div class="but_razd"></div>
+	<a href="home.html" class="but" title="">Patrones</a>	
+	</div>
+</div>
+<h1 id="titulo" align=center>Visitor</h1>
+<div id="margen">
 <br>
-<p>En esta secci&oacute;n se aplica el patr&oacute;n Visitor en los juguetes y frutas que se usan en las comidas infantiles del restaurante. Se calcula el precio de ambos en una orden que se hace por Internet y se despliega el total a pagar.</p>
+<p>El patron visitor se utiliza para calcular el precio total de una compra de la mercancia disponible</p>
+<br>
 <div id="consola">
 <%
-ItemElement[] items = new ItemElement[]{new Toy(20, "1234"),new Toy(15, "5678"),new Toy(25, "5678"),new Fruit(10, 2, "Plátano"), new Fruit(5, 5, "Manzana"), new Fruit(8, 3, "Naranja")};
+ItemElement[] items = new ItemElement[]{new Figura (20, "1234"),new Figura (15, "5678"),new Figura (25, "5678"),new Producto(10, 2, "Varilla de cristal"), new Producto(5, 5, "Tubo de cristal"), new Producto(8, 3, "Varilla de color")};
 double total = ShoppingCartClient.calculatePrice(items);
 System.out.println("Costo total : "+total);
 
@@ -33,6 +47,6 @@ System.out.println("Costo total : "+total);
 <br>
 </div>
 <br>
-Ramirez Vasquez Luis Fernando - 2017
+
 </body>
 </html>

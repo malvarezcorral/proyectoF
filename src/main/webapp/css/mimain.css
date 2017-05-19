@@ -1,5 +1,5 @@
 /*.jumbotron {
-  background: #532F8C;
+  background: #F5A9E1;
   color: white;
   padding-bottom: 80px; }
   .jumbotron .btn-primary {
@@ -27,7 +27,7 @@
 */
 body{
 	font-family: "Century";
-	background: #B71919;
+	background: #F5A9E1;
 }
 h1{
 	font-family: "Century";
@@ -50,7 +50,7 @@ div#consola{
 	border-radius: 8px;
 }
 
-div {
+div#margen {
 	background: #FFFFFF;
 	font-family: "Century";
 	font-size: 20px;

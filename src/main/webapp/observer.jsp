@@ -1,31 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="jvham.observer.Observer"%>
-<%@page import="jvham.observer.Subject"%>
-<%@page import="jvham.observer.MyTopic"%>
-<%@page import="jvham.observer.MyTopicSubscriber"%>
-<%@page import="jvham.observer.Consola"%>
+<%@page import="observer.Observer"%>
+<%@page import="observer.Subject"%>
+<%@page import="observer.MyTopic"%>
+<%@page import="observer.MyTopicSubscriber"%>
+<%@page import="observer.Consola"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Restaurante de Hambuguesas | Luis Fernando Ramirez Vasquez</title>
-<link rel="stylesheet" type="text/css" href="css/mimain.css">
+<title>Cristaleria Flores</title>
+<!-- <link rel="stylesheet" type="text/css" href="css/mimain.css">-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1 align=center>Observer</h1>
-<div>
+<div id="header">
+	<div id="logo">
+		<a href="#"></a>
+		<h2><a href="#"><small> </small></a></h2>	
+	</div>
+ <div id="buttons">
+	<a href="index.jsp" class="but_home" title=""></a><div class="but_razd"></div>
+	<a href="blog.jsp" class="but" title="">Materiales</a><div class="but_razd"></div>
+	<a href="galeria.jsp" class="but" title="">Galería</a><div class="but_razd"></div>
+	<a href="inventario.jsp" class="but" title="">Inventario</a><div class="but_razd"></div>
+	<a href="home.html" class="but" title="">Patrones</a>	
+	</div>
+</div>
+<h1 id="titutlo" align=center>Observer</h1>
+<div  id="margen">
 <br>
-<p>En esta secci&oacute;n se aplica el patr&oacute;n Observer en las notificaciones de la p&aacute;gina. Se tienen diferentes observadores de tipo Observer que son suscritos a un t&oacute;pico (promociones del restaurante).
- Si se crea una nueva promoci&oacute;n, los usuarios suscritos son notificados.</p>
+<br>
+<p>En la Cristaleria hay diferentes usuarios que deben estar informados de ciertos eventos como la venta de mercancia, proximos materiales a terminar, etc. El patron Observer se aplica en esto permitiendo que los usuarios observen un misto topico en este caso el evento.  </p>
+<br>
+<br>
+<table class="GeneratedTable">
+  <thead>
+    <tr>
+        <th><input type="text" name ="evento" id="texto"></th>      
+      <th><input type="submit" name ="ok"></th>
+    </tr>
+  </thead>
+</table>
+  
+<br>
+<br>
 <%
-//create subject
+//create subject        
+                                                       
 		MyTopic topic = new MyTopic();
 		
 		//create observers
-		Observer obj1 = new MyTopicSubscriber("Usuario1");
-		Observer obj2 = new MyTopicSubscriber("Usuario2");
-		Observer obj3 = new MyTopicSubscriber("Usuario3");
+		Observer obj1 = new MyTopicSubscriber("Nayeli");
+		Observer obj2 = new MyTopicSubscriber("Miguel");
+		Observer obj3 = new MyTopicSubscriber("Alejandro");
 		
 		//register observers to the subject
 		topic.register(obj1);
@@ -43,7 +71,7 @@
 		obj3.update();
 		
 		//now send message to subject
-		topic.postMessage("Promoción de verano");
+		topic.postMessage("Venta realizada");
 %>
 <div id="consola">
 <%=Consola.texto %>
@@ -52,6 +80,5 @@
 <br>
 </div>
 <br>
-Ramirez Vasquez Luis Fernando - 2017
 </body>
 </html>

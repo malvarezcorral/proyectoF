@@ -10,14 +10,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Restaurante de Hambuguesas | Luis Fernando Ramirez Vasquez</title>
+<title>Figuras de Cristal</title>
 <link rel="stylesheet" type="text/css" href="css/mimain.css">
+<link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1 align=center> Command </h1>
-<div>
+
+<div id="header">
+	<div id="logo">
+		<a href="#"></a>
+		<h2><a href="#"><small> </small></a></h2>	
+	</div>
+ <div id="buttons">
+	<a href="index.jsp" class="but_home" title=""></a><div class="but_razd"></div>
+	<a href="blog.jsp" class="but" title="">Materiales</a><div class="but_razd"></div>
+	<a href="galeria.jsp" class="but" title="">Galería</a><div class="but_razd"></div>
+	<a href="inventario.jsp" class="but" title="">Inventario</a><div class="but_razd"></div>
+	<a href="home.html" class="but" title="">Patrones</a>	
+	</div>
+</div>
+
+<h1 id="titulo" align="center"> Command </h1>
 <br>
-<p>En esta secci&oacute;n se aplica el patr&oacute;n Command, en las luces del restaurante. Si se activa el switch y las luces est&aacute;n encendidas, se apagan. Y si est&aacute;n apagadas, se encienden. </p>
+<br>
+<div id="margen">
+<br >
+<p>El patr&oacute;n Command es aplicado en el area de horneado del taller. La temperatura de los hornos exceden a los 1000ºC estos procederan a apagarse. En el caso de que los hornos  est&aacute;n a una temperatura menor a los 1000ºC, se encienden. </p>
+<br>
+<br>
+<img src="images/Palanca.gif" >
 <%
 RemoteControl control = new RemoteControl();
 Light light = new Light();
@@ -29,7 +50,7 @@ Command lightsOff = new LightsOffCommand(light);
 control.setCommand(lightsOn);
 control.pressButton();
 %>
-<h3>Luz apagada: </h3>
+<h3>Hornos apagados: </h3>
 <p><%=Consola.estado %>
 <%
 //switch off
@@ -37,12 +58,11 @@ control.pressButton();
 control.setCommand(lightsOff);
 control.pressButton();
 %>
-<h3>Luz encencida: </h3>
+<br>
+<h3>Hornos encendidos: </h3>
 <p><%=Consola.estado %>
 <br>
 <br>
 </div>
-<br>
-Ramirez Vasquez Luis Fernando - 2017
 </body>
 </html>

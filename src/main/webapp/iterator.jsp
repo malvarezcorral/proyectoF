@@ -7,15 +7,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Restaurante de Hambuguesas | Luis Fernando Ramirez Vasquez</title>
-<link rel="stylesheet" type="text/css" href="css/mimain.css">
+<title>Figuras de Cristal</title>
+
+<!-- <link rel="stylesheet" type="text/css" href="css/mimain.css">-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1 align=center> Iterator </h1>
-<div>
+<div id="header">
+	<div id="logo">
+		<a href="#"></a>
+		<h2><a href="#"><small> </small></a></h2>	
+	</div>
+ <div id="buttons">
+	<a href="index.jsp" class="but_home" title=""></a><div class="but_razd"></div>
+	<a href="blog.jsp" class="but" title="">Materiales</a><div class="but_razd"></div>
+	<a href="galeria.jsp" class="but" title="">Galería</a><div class="but_razd"></div>
+	<a href="inventario.jsp" class="but" title="">Inventario</a><div class="but_razd"></div>
+	<a href="home.html" class="but" title="">Patrones</a>	
+	</div>
+</div>
 <br>
-<p>En esta secci&oacute;n se aplica el patr&oacute;n Iterator, al desplegar los nombres de los empleados, que son una colecci&oacute;n de objetos en los que se tiene un acceso secuencial.</p>
+<br>
+<h1 id="titulo" align=center> Iterator </h1>
+<div id="margen">
+<br>
+<p>El patr&oacute;n Iterator esta siendo aplicado al mostrar los nombres de los empleados, los cuales pueden interpretarse como una colecci&oacute;n de objetos.</p>
+<p> Se pretende que estos tengan un secuencia al momento de desplegarlos.</p>
+<br>
+<br>
 <h3>Empleados: </h3>
+<br>
 <%
 NameRepository namesRepository = new NameRepository();
 
@@ -29,7 +50,5 @@ for(Iterator iter = namesRepository.getIterator(); iter.hasNext();){
 %>
 <br>
 </div>
-<br>
-Ramirez Vasquez Luis Fernando - 2017
 </body>
 </html>

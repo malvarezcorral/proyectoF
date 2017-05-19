@@ -1,6 +1,6 @@
-<%@page import="jvham.memento.Caretaker"%>
-<%@page import="jvham.memento.Memento"%>
-<%@page import="jvham.memento.Inventario"%>
+<%@page import="memento.EstadoAnterior"%>
+<%@page import="memento.Memento"%>
+<%@page import="memento.Inventario"%>
 <%@page import="java.util.ArrayList"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -9,69 +9,74 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Restaurante de Hambuguesas | Luis Fernando Ramirez Vasquez</title>
-<link rel="stylesheet" type="text/css" href="css/mimain.css">
+<title>Cristaleria Flores</title>
+<!-- <link rel="stylesheet" type="text/css" href="css/mimain.css">-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1 align=center> Memento </h1>
-<div>
-<br>
-<p>En esta secci&oacute;n, se aplica el patr&oacute;n Memento en el inventario de ingredientes. Se tiene un originador de datos en una clase Inventario, a la que se le modifican la cantidad de ingredientes del inventario. 
-La clase Caretaker graba el estado actual en la clase Memento para poder recuperar los valores anteriores cuando se desee, como si fuera un historial de cantidades.</p>
+<div id="header">
+	<div id="logo">
+		<a href="#"></a>
+		<h2><a href="#"><small> </small></a></h2>	
+	</div>
+ <div id="buttons">
+	<a href="index.jsp" class="but_home" title=""></a><div class="but_razd"></div>
+	<a href="blog.jsp" class="but" title="">Materiales</a><div class="but_razd"></div>
+	<a href="galeria.jsp" class="but" title="">Galería</a><div class="but_razd"></div>
+	<a href="inventario.jsp" class="but" title="">Inventario</a><div class="but_razd"></div>
+	<a href="home.html" class="but" title="">Patrones</a>	
+	</div>
+</div>
 
+<h1 id="titulo" align=center> Memento </h1>
+<br>
+<br>
+<div id="margen">
+<br>
+<p>El patron utilizado es Memento y es utilizado para las cantidades de los elementos en el inventario, este patron consiste de 
+   una clase llamada Inventario donde los datos son modificados y otra donde se cuarda los estados actuales y asi en la siguiente actualizacion permitir recuperar los datos.
+</p>
+<br>
+<br>
 <%
-Caretaker caretaker = new Caretaker();
+EstadoAnterior caretaker = new EstadoAnterior();
 Inventario originator = new Inventario();
 int[] vista = originator.getState();
 %>
-<h3>Estado inicial:</h3>
-<ul><li>Panes: <%=vista[0]%></li><li>Carnes: <%=vista[1]%></li><li>Lechugas: <%=vista[2]%></li><li>Tomates: <%=vista[3]%></li><li>Cebollas: <%=vista[4]%></li><li>Quesos: <%=vista[5]%></li></ul>
 
-<%
-originator.setState(new int[]{9,8,7,6,5,4});
-caretaker.add( originator.save() );
-vista = originator.getState();
-%>
-<h3>Estado 2:</h3>
-<ul><li>Panes: <%=vista[0]%></li><li>Carnes: <%=vista[1]%></li><li>Lechugas: <%=vista[2]%></li><li>Tomates: <%=vista[3]%></li><li>Cebollas: <%=vista[4]%></li><li>Quesos: <%=vista[5]%></li></ul>
+<table class="GeneratedTable">
+  <thead>
+    <tr>
+      <th>Estado inicial</th>
+      <th>Estado Anterior</th>
+      <th>Estado Actual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><ul><li>Varilla de cristal: <%=vista[0]%></li><li>Tubo de cristal: <%=vista[1]%></li><li>Varillas de color: <%=vista[2]%></li><li> Tubos de color: <%=vista[3]%></li><li> Tubo de vidrio: <%=vista[4]%></li></ul></td>
+      <%
+        originator.setState(new int[]{9,8,7,6,5,4});
+        caretaker.add( originator.save() );
+        vista = originator.getState();
+        %>
+      <td><ul><li>Varilla de cristal: <%=vista[0]%></li><li>Tubo de cristal: <%=vista[1]%></li><li>Varillas de color: <%=vista[2]%></li><li> Tubos de color: <%=vista[3]%></li><li> Tubo de vidrio: <%=vista[4]%></li></ul></td>
+      <%
+        originator.setState(new int[]{8,7,6,5,4,3});
+        caretaker.add( originator.save() );
+        vista = originator.getState();
+        %>
+      <td><ul><li>Varilla de cristal: <%=vista[0]%></li><li>Tubo de cristal: <%=vista[1]%></li><li>Varillas de color: <%=vista[2]%></li><li> Tubos de color: <%=vista[3]%></li><li> Tubo de vidrio: <%=vista[4]%></li></ul></td>
+    </tr>
+  </tbody>
+</table>
 
-<%
-originator.setState(new int[]{8,7,6,5,4,3});
-caretaker.add( originator.save() );
-vista = originator.getState();
-%>
-<h3>Estado 3:</h3>
-<ul><li>Panes: <%=vista[0]%></li><li>Carnes: <%=vista[1]%></li><li>Lechugas: <%=vista[2]%></li><li>Tomates: <%=vista[3]%></li><li>Cebollas: <%=vista[4]%></li><li>Quesos: <%=vista[5]%></li></ul>
-
-<%
-originator.setState(new int[]{7,6,5,4,3,2});
-caretaker.add( originator.save() );
-vista = originator.getState();
-%>
-<h3>Estado 4:</h3>
-<ul><li>Panes: <%=vista[0]%></li><li>Carnes: <%=vista[1]%></li><li>Lechugas: <%=vista[2]%></li><li>Tomates: <%=vista[3]%></li><li>Cebollas: <%=vista[4]%></li><li>Quesos: <%=vista[5]%></li></ul>
-
-<%
-originator.restore( caretaker.get(0));
-vista = originator.getState();
-%>
-<h3>Estado 2 recuperado:</h3>
-<ul><li>Panes: <%=vista[0]%></li><li>Carnes: <%=vista[1]%></li><li>Lechugas: <%=vista[2]%></li><li>Tomates: <%=vista[3]%></li><li>Cebollas: <%=vista[4]%></li><li>Quesos: <%=vista[5]%></li></ul>
-
-<%
-originator.restore( caretaker.get(2));
-vista = originator.getState();
-
-%>
-<h3>Estado 4 recuperado:</h3>
-<ul><li>Panes: <%=vista[0]%></li><li>Carnes: <%=vista[1]%></li><li>Lechugas: <%=vista[2]%></li><li>Tomates: <%=vista[3]%></li><li>Cebollas: <%=vista[4]%></li><li>Quesos: <%=vista[5]%></li></ul>
 <br>
 <br>
 <div id=botones></div>
 </div>
 <div id=divVer></div>
 <br>
-Ramirez Vasquez Luis Fernando - 2017
 </body>
 
 </html>

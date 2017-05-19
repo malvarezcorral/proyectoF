@@ -1,6 +1,6 @@
-<%@page import="jvham.memento.Caretaker"%>
-<%@page import="jvham.memento.Memento"%>
-<%@page import="jvham.memento.Inventario"%>
+<%@page import="memento.EstadoAnterior"%>
+<%@page import="memento.Memento"%>
+<%@page import="memento.Inventario"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

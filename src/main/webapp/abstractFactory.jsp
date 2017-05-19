@@ -1,72 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="jvham.abstractFactory.Cliente"%>
-<%@page import="jvham.abstractFactory.Complementos"%>
-<%@page import="jvham.abstractFactory.ComplementosConSal"%>
-<%@page import="jvham.abstractFactory.ComplementosSinSal"%>
-<%@page import="jvham.abstractFactory.Papas"%>
-<%@page import="jvham.abstractFactory.PapasConSal"%>
-<%@page import="jvham.abstractFactory.PapasSinSal"%>
-<%@page import="jvham.abstractFactory.Nuggets"%>
-<%@page import="jvham.abstractFactory.NuggetsConSal"%>
-<%@page import="jvham.abstractFactory.NuggetsSinSal"%>
+<%@page import="abstractFactory.Cliente"%>
+<%@page import="abstractFactory.Tipos"%>
+<%@page import="abstractFactory.ColorFactory"%>
+<%@page import="abstractFactory.ClearFactory"%>
+<%@page import="abstractFactory.Tubos"%>
+<%@page import="abstractFactory.TubosColor"%>
+<%@page import="abstractFactory.TubosTransparente"%>
+<%@page import="abstractFactory.Varillas"%>
+<%@page import="abstractFactory.VarillasColor"%>
+<%@page import="abstractFactory.VarillasTransparente"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Restaurante de Hambuguesas | Luis Fernando Ramirez Vasquez</title>
-<link rel="stylesheet" type="text/css" href="css/mimain.css">
+<title></title>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<h1 align=center> Abstract Factory </h1>
-<div>
+    <div id="header">
+	<div id="logo">
+		<a href="#"></a>
+		<h2><a href="#"><small> </small></a></h2>	
+	</div>
+ <div id="buttons">
+	<a href="index.jsp" class="but_home" title=""></a><div class="but_razd"></div>
+	<a href="blog.jsp" class="but" title="">Materiales</a><div class="but_razd"></div>
+	<a href="galeria.jsp" class="but" title="">Galer�a</a><div class="but_razd"></div>
+	<a href="inventario.jsp" class="but" title="">Inventario</a><div class="but_razd"></div>
+	<a href="home.html" class="but" title="">Patrones</a>	
+	</div>
+</div>
+
 <br>
-<p>En esta secci&oacute;n, se aplica el patr&oacute;n Abstract Factory. a implementación se hará con clases de tipo Papas y Nuggets, que tienen dos variedades: Con Sal y Sin Sal.
-Estas variedades se fabricarán en la clase Complementos, de la que derivan ComplementosConSal y ComplementosSinSal.</p>
+<br>
+<h1 id="titulo" align=center> Abstract Factory </h1>
+<br>
+<br>
+<div id="margen">
+<br>
+<p>Aqu&iacute; se aplica el patr&oacute;n de dise&ntilde; AbstracT Factory donde se crea la fabrica abstracta GlassFactory que cuenta con dos fabricas concretas ClearFactory para productos transparentes y COlorFactory para productos con color.</p>
+<p>LOs productos a realizar son varilla transparente y a color y tubo transparente y a color.</p>
 <br>
 <h3>Implementaci&oacute;n: </h3>
 <%
 // Se insertarán los componentes con sal
-Cliente cliente = new Cliente( new ComplementosConSal() );
+Cliente cliente = new Cliente( new ColorFactory() );
 System.out.println("----------------------------");
 // Ahora se insertarán los componentes sin sal
-cliente = new Cliente( new ComplementosSinSal() );
+cliente = new Cliente( new ClearFactory() );
 //-------------------------------------------------------------------------
-Complementos complementosConSal = new ComplementosConSal();
+Tipos acolor = new ColorFactory();
 
-Papas papas = complementosConSal.getPapas();
-String mConfigurarPapas = papas.configurar();
-String mEntregarPapas = papas.entregar();
+Tubos tubo = acolor.getTubos();
+String ConfigurarTubo = tubo.configurar();
+String crearTubo = tubo.crear();
 
-Nuggets nuggets = complementosConSal.getNuggets();
-String mConfigurarNuggets = nuggets.configurar();
-String mEntregarNuggets = nuggets.entregar();
+Varillas varilla = acolor.getVarillas();
+String ConfigurarVarilla = varilla.configurar();
+String crearVarilla = varilla.crear();
 
 
 %>
-<p><%=mConfigurarPapas %></p>
-<p><%=mEntregarPapas %></p>
-<p><%=mConfigurarNuggets %></p>
-<p><%=mEntregarNuggets %></p>
+<p><%=crearTubo %></p>
+<p><%=ConfigurarTubo %></p>
+<p><%=crearVarilla %></p
+><p><%=ConfigurarVarilla %></p>
+
 
 <%
-Complementos complementosSinSal = new ComplementosSinSal();
+Tipos transparente = new ClearFactory();
 
-Papas papasSin = complementosSinSal.getPapas();
-String mConfigurarPapasSin = papasSin.configurar();
-String mEntregarPapasSin = papasSin.entregar();
+Tubos tuboclear = transparente.getTubos();
+String configurartuboclear = tuboclear.configurar();
+String creartuboclear = tuboclear.crear();
 
-Nuggets nuggetsSin = complementosSinSal.getNuggets();
-String mConfigurarNuggetsSin = nuggetsSin.configurar();
-String mEntregarNuggetsSin = nuggetsSin.entregar();
+Varillas varclear = transparente.getVarillas();
+String configurarvarclear = varilla.configurar();
+String crearvarclear = varilla.crear();
 %>
-<p><%=mConfigurarPapasSin %></p>
-<p><%=mEntregarPapasSin %></p>
-<p><%=mConfigurarNuggetsSin %></p>
-<p><%=mEntregarNuggetsSin %></p>
+<p><%=creartuboclear %></p>
+<p><%=configurartuboclear %></p>
+<p><%=crearvarclear %></p>
+<p><%=configurarvarclear %></p>
+
 <br>
 </div>
 <br>
-Ramirez Vasquez Luis Fernando - 2017
 </body>
 </html>
